@@ -4,12 +4,13 @@ Coursera Clean Data Course Project
 ## Introduction
 
 This project is an assignment for the Coursera Clean Data Course, and the object is to create a tidy data set from the "Human Activity Recognition Using Smartphones Dataset, Version 1.0", that contains the means of selected measurements for each activity and each subject:
+
 "...create one R script called run_analysis.R that does the following. 
-1. Merges the training and the test sets to create one data set.
-2. Extracts only the measurements on the mean and standard deviation for each measurement. 
-3. Uses descriptive activity names to name the activities in the data set
-4. Appropriately labels the data set with descriptive variable names. 
-5. From the data set in step 4, creates a second, independent tidy data set with the average of each variable for each activity and each subject."
+* 1. Merges the training and the test sets to create one data set.
+* 2. Extracts only the measurements on the mean and standard deviation for each measurement. 
+* 3. Uses descriptive activity names to name the activities in the data set
+* 4. Appropriately labels the data set with descriptive variable names. 
+* 5. From the data set in step 4, creates a second, independent tidy data set with the average of each variable for each activity and each subject."
 
 ## How to recreate the Tidy Data Set
 
@@ -17,7 +18,7 @@ Unzip the raw data into the working directory that run_analysis.R is placed -- t
 
 Run the script run_analysis.R. The output of the script is in the same directory as the script is, and is called TidyData.txt.  It contains the final dataset, and can be read in with the following R statement:
 ```
-mydata <- read.table("TidyData.dat", header = TRUE)
+mydata <- read.table("TidyData.txt", header = TRUE)
 ```
 where mydata will contain the data, with labels.
 
@@ -33,14 +34,18 @@ The training data files
 * subject_train (1 column of subject codes, range 1-30), 
 * y_train (1 column of activity codes, range 1-6), 
 * x_train (561 columns of measurement for each subject and activity) 
+
 were combined to form a table with 563 columns.
+
 After similarly combining the test data files  
 * subject_test (1 column of subject codes, range 1-30), 
 * y_test (1 column of activity codes, range 1-6), 
 * x_test (561 columns of measurement for each subject and activity), 
+
 the rows of these two tables were combined to form the combined data set. The resulting table had 10299 rows (observations) with 563 columns(variables), the first two of which identified the subject by code and the activity by code; the rest of the columns contained the raw data as described in the raw data set.
 
 ### Labeling the columns
+
 The descriptions of the raw data variables in file features.txt was used to give the table columns names.  These descriptions by themselves contained characters that were illegal for column names, so they were slightly modified by stripping out all brackets '(' and ')', and replacing all other invalid characters '-', and ',' by '.'.  Although not as nice as the original descriptions, the resulting column names are still clearly identifiable.
 
 Note that this table had duplicate column names; however the columns we were interested in for this assignment were unique, hence the duplicate column problem was ignored.
